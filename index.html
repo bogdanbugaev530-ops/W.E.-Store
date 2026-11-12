@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="W.E. Store — премиальная одежда и аксессуары. Оригиналы и копии высшего класса. Доставка по России.">
+    <title>W.E. Store | Премиальная уличная мода</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">W.E.<span>Store</span></a>
+            <div class="nav-center">
+                <a href="#catalog" class="nav-link">Каталог</a>
+                <a href="#story" class="nav-link">История</a>
+                <a href="#why" class="nav-link">Почему мы</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon" aria-label="Поиск">🔍</button>
+                <button class="nav-icon cart-btn" aria-label="Корзина" onclick="toggleCart()">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+                <button class="menu-btn" aria-label="Меню" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+            <a href="#catalog" onclick="toggleMobileMenu()">Каталог</a>
+            <a href="#story" onclick="toggleMobileMenu()">История</a>
+            <a href="#why" onclick="toggleMobileMenu()">Почему мы</a>
+            <a href="#contact" onclick="toggleMobileMenu()">Контакты</a>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <span class="hero-badge">🔥 Новый дроп доступен</span>
+            <h1>Уличная мода <span class="gradient">без компромиссов</span></h1>
+            <p>Оригиналы и премиальные копии высшего класса. Вещи в идеальном состоянии. Доставка по всей России.</p>
+            <div class="hero-actions">
+                <a href="#catalog" class="btn btn-primary">Смотреть каталог</a>
+                <a href="https://t.me/WEStoreeee" class="btn btn-outline" target="_blank">Наш Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="catalog" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Свежий дроп</h2>
+                <p>Лимитированные позиции. Когда закончатся — не вернётся.</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="tops">Верхняя одежда</button>
+                <button class="filter-btn" data-filter="bottoms">Низ</button>
+                <button class="filter-btn" data-filter="accessories">Аксессуары</button>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <section id="story" class="section bg-light">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-text">
+                    <h2>История W.E. Store</h2>
+                    <p>Мы начинали с любви к уличной моде и premium копиям, которые неотличимы от оригиналов. Каждая вещь в нашем каталоге проходит отбор: мы проверяем качество ткани, швов, фурнитуры и состояние.</p>
+                    <p>W.E. Store — это не просто магазин. Это сообщество людей, которые ценят стиль и не переплачивают за брендовое имя.</p>
+                </div>
+                <div class="story-visual">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">проданных вещей</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">48ч</div>
+                        <div class="stat-label">средняя доставка</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">поддержка в Telegram</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему покупают у нас</h2>
+                <p>Мы ценим ваше время и деньги</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🔒</div>
+                    <h3>Проверенное качество</h3>
+                    <p>Каждая вещь проходит отбор: ткань, швы, фурнитура, состояние. Никаких сюрпризов.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚚</div>
+                    <h3>Доставка по России</h3>
+                    <p>Отправляем в любой город. Средний срок — 2–4 дня. Трек-номер предоставляем.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💬</div>
+                    <h3>Обратная связь</h3>
+                    <p>Напишите в Telegram @WEStoreeee — ответим на все вопросы о товаре и размере.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Готовы купить?</h2>
+                <p>Напишите в Telegram, укажите название товара из каталога — оформим заказ за 5 минут.</p>
+                <a href="https://t.me/WEStoreeee" class="btn btn-primary btn-block" target="_blank">Написать в Telegram</a>
+                <div class="contact-info">
+                    <p>📦 Доставка: по всей России</p>
+                    <p>💰 Оплата: при получении или переводом</p>
+                    <p>🔗 Канал: t.me/WEStoreeee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">W.E.<span>Store</span></div>
+            <p>© 2026 W.E. Store. Премиальная уличная мода.</p>
+            <p>Все материалы взяты из открытого источника Telegram-канала.</p>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-overlay" onclick="toggleCart()"></div>
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Ваша корзина</h2>
+                <button class="cart-close" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="cart-total"><span>Итого:</span><span id="cartTotal">0 ₽</span></div>
+                <a href="https://t.me/WEStoreeee" class="btn btn-primary btn-block" target="_blank">Оформить в Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Товар добавлен в корзину</div>
+
+    <canvas id="confetti"></canvas>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Галерея фотографий (lightbox) -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-overlay" onclick="closeGallery()"></div>
+        <div class="gallery-content">
+            <button class="gallery-close" onclick="closeGallery()">&times;</button>
+            <button class="gallery-nav gallery-prev" onclick="prevGalleryPhoto()">&#10094;</button>
+            <div class="gallery-image-wrapper">
+                <img src="" alt="" id="galleryMainImg">
+                <div class="gallery-counter" id="galleryCounter">1 / 1</div>
+            </div>
+            <button class="gallery-nav gallery-next" onclick="nextGalleryPhoto()">&#10095;</button>
+            <div class="gallery-thumbs" id="galleryThumbs"></div>
+            <div class="gallery-info">
+                <h3 id="galleryTitle"></h3>
+                <p id="galleryPrice"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
