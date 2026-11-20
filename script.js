@@ -96,7 +96,16 @@ function selectSize(productId, size) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     product.selectedSize = size;
-    renderProducts();
+    const buttons = document.querySelectorAll('.size-btn[data-product-id="' + productId + '"]');
+    buttons.forEach(btn => {
+        if (btn.dataset.size === size) {
+            btn.style.background = 'var(--primary)';
+            btn.style.color = '#fff';
+        } else {
+            btn.style.background = '';
+            btn.style.color = '';
+        }
+    });
 }
 
 function getCategoryLabel(cat) {
@@ -292,9 +301,54 @@ function fireConfetti() {
     animate();
 }
 
-// Intersection Observer for fade-in animations
+function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Observe elements with fade-up class
+    // 1. Добавляем сохранённые пользователем товары из localStorage (без дублей)
+    customProducts.forEach(cp => {
+        if (!products.find(p => p.id === cp.id)) {
+            products.push(cp);
+        }
+    });
+
+    // 2. Применяем сохранённые администратором размеры
+    Object.keys(productSizeOverrides).forEach(key => {
+        const id = parseInt(key, 10);
+        const product = products.find(p => p.id === id);
+        if (product) {
+            product.sizes = productSizeOverrides[key];
+        }
+    });
+
+    // 3. Инициализация выбранного размера для товаров с размерами
+    products.forEach(p => {
+        if (p.sizes && p.sizes.length > 0 && !p.selectedSize) {
+            p.selectedSize = p.sizes[0];
+        }
+    });
+
+    // 4. Загрузка корзины и сохраненных фото
+    loadCart();
+    loadSavedImages();
+
+    // 5. Восстановление экрана админ-панели при необходимости
+    if (adminAuthenticated) {
+        const loginScreen = document.getElementById('adminLoginScreen');
+        const mainContent = document.getElementById('adminMainContent');
+        const passError = document.getElementById('adminPasswordError');
+        if (loginScreen) loginScreen.style.display = 'none';
+        if (mainContent) mainContent.style.display = 'block';
+        if (passError) passError.style.display = 'none';
+    }
+    populateProductSizeSelect();
+
+    // 6. ЕДИНСТВЕННЫЙ рендер каталога товаров при загрузке
+    renderProducts();
+    updateCartUI();
+
+    // Intersection Observer for fade-in animations
     const fadeElements = document.querySelectorAll('.fade-up');
     const fadeObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -303,25 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
     fadeElements.forEach(el => fadeObserver.observe(el));
-});
-
-function toggleMobileMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация выбранного размера для товаров с размерами
-    products.forEach(p => {
-        if (p.sizes && p.sizes.length > 0) {
-            p.selectedSize = p.sizes[0];
-        }
-    });
-    loadCart();
-    loadSavedImages();
-    renderProducts();
-    updateCartUI();
 
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
@@ -914,30 +950,4 @@ function adminCreateProduct() {
     }
 }
 
-// ========== ВОССТАНОВЛЕНИЕ АДМИН-РЕЖИМА ПРИ ЗАГРУЗКЕ ==========
-document.addEventListener('DOMContentLoaded', () => {
-    // Добавляем сохранённые пользователем товары (без дублей)
-    customProducts.forEach(cp => {
-        if (!products.find(p => p.id === cp.id)) {
-            products.push(cp);
-        }
-    });
 
-
-    // Применить сохранённые администратором размеры
-    Object.keys(productSizeOverrides).forEach(key => {
-        const id = parseInt(key, 10);
-        const product = products.find(p => p.id === id);
-        if (product) {
-            product.sizes = productSizeOverrides[key];
-        }
-    });
-
-    if (adminAuthenticated) {
-        document.getElementById('adminLoginScreen').style.display = 'none';
-        document.getElementById('adminMainContent').style.display = 'block';
-        document.getElementById('adminPasswordError').style.display = 'none';
-    }
-    populateProductSizeSelect();
-    renderProducts();
-});
