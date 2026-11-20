@@ -174,7 +174,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 68px;
     padding: 0 12px;
 }
 
@@ -342,7 +342,7 @@ body {
 /* Герой */
 .hero {
     position: relative;
-    padding: 180px 0 160px;
+    padding: 50px 0 90px;
     overflow: hidden;
 }
 
@@ -381,7 +381,7 @@ body {
     font-size: 0.85rem;
     font-weight: 800;
     color: var(--primary);
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     letter-spacing: 0.5px;
     animation: float 5s ease-in-out infinite;
 }
@@ -1203,6 +1203,9 @@ footer p {
 
 /* Адаптив */
 @media (max-width: 768px) {
+    .hero {
+        padding: 35px 0 60px;
+    }
     .nav-center {
         display: none;
     }
