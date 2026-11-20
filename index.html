@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="W.E. Store — премиальная одежда и аксессуары. Оригиналы и копии высшего класса. Доставка по России.">
+    <title>W.E. Store | Премиальная уличная мода</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">W.E.<span>Store</span></a>
+            <div class="nav-center">
+                <a href="#catalog" class="nav-link">Каталог</a>
+                <a href="#story" class="nav-link">История</a>
+                <a href="#why" class="nav-link">Почему мы</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon" aria-label="Поиск">🔍</button>
+                <button class="nav-icon cart-btn" aria-label="Корзина" onclick="toggleCart()">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+                <button class="menu-btn" aria-label="Меню" onclick="toggleMobileMenu()">☰</button>
+                <button class="nav-icon nav-admin" aria-label="Админ" onclick="openAdminPanel()">⚙️</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="close-btn" onclick="toggleMobileMenu()">&times;</button>
+            <a href="#catalog" onclick="toggleMobileMenu()">Каталог</a>
+            <a href="#story" onclick="toggleMobileMenu()">История</a>
+            <a href="#why" onclick="toggleMobileMenu()">Почему мы</a>
+            <a href="#contact" onclick="toggleMobileMenu()">Контакты</a>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <span class="hero-badge">🔥 Новый дроп доступен</span>
+            <h1>Уличная мода <span class="gradient">без компромиссов</span></h1>
+            <p>Оригиналы и премиальные копии высшего класса. Вещи в идеальном состоянии. Доставка по всей России.</p>
+            <div class="hero-actions">
+                <a href="#catalog" class="btn btn-primary">Смотреть каталог</a>
+                <a href="https://t.me/WEStoreeee" class="btn btn-outline" target="_blank">Наш Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="catalog" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Свежий дроп</h2>
+                <p>Лимитированные позиции. Когда закончатся — не вернётся.</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="tops">Верхняя одежда</button>
+                <button class="filter-btn" data-filter="bottoms">Низ</button>
+                <button class="filter-btn" data-filter="accessories">Аксессуары</button>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <section id="story" class="section bg-light">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-text">
+                    <h2>История W.E. Store</h2>
+                    <p>W.E. Store появился из любви к уличной моде и эстетике нулевых. Мы начали с того, что собирали лучшие вещи из разных городов — от редких худи до аксессуаров, которые уже сложно найти в продаже.</p>
+                    <p>Наша цель — сделать стиль доступным. Мы верим, что классная одежда не должна стоить огромных денег, поэтому отбираем только проверенные позиции с отличным состоянием. Каждая вещь проходит ручной отбор: мы проверяем ткань, швы, фурнитуру и общее состояние, чтобы вам не пришлось беспокоиться о качестве.</p>
+                    <p>W.E. Store — это не просто магазин. Это сообщество людей, которые ценят уличную культуру, не переплачивают за брендовое имя и выбирают осознанный подход к покупкам.</p>
+                </div>
+                <div class="story-visual">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">проданных вещей</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">48ч</div>
+                        <div class="stat-label">средняя доставка</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">поддержка в Telegram</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему покупают у нас</h2>
+                <p>Мы ценим ваше время и деньги</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🔒</div>
+                    <h3>Проверенное качество</h3>
+                    <p>Каждая вещь проходит отбор: ткань, швы, фурнитура, состояние. Никаких сюрпризов.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚚</div>
+                    <h3>Доставка по России</h3>
+                    <p>Отправляем в любой город. Средний срок — 2–4 дня. Трек-номер предоставляем.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💬</div>
+                    <h3>Обратная связь</h3>
+                    <p>Напишите в Telegram @WEStoreeee — ответим на все вопросы о товаре и размере.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Готовы купить?</h2>
+                <p>Напишите в Telegram, укажите название товара из каталога — оформим заказ за 5 минут.</p>
+                <a href="https://t.me/WEStoreeee" class="btn btn-primary btn-block" target="_blank">Написать в Telegram</a>
+                <div class="contact-info">
+                    <p>📦 Доставка: по всей России</p>
+                    <p>💰 Оплата: при получении или переводом</p>
+                    <p>🔗 Канал: t.me/WEStoreeee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">W.E.<span>Store</span></div>
+            <p>© 2026 W.E. Store. Премиальная уличная мода.</p>
+            <p>Все материалы взяты из открытого источника Telegram-канала.</p>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-overlay" onclick="toggleCart()"></div>
+        <div class="cart-modal-content" onclick="event.stopPropagation()">
+            <div class="cart-header">
+                <h2>Ваша корзина</h2>
+                <button class="cart-close" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="cart-total"><span>Итого:</span><span id="cartTotal">0 ₽</span></div>
+                <a href="https://t.me/WEStoreeee" class="btn btn-primary btn-block" target="_blank">Оформить в Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Товар добавлен в корзину</div>
+
+    <!-- Админ-панель для загрузки фото -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-overlay" onclick="closeAdminPanel()"></div>
+        <div class="admin-content">
+            <div class="admin-header">
+                <h3>⚙️ Админ-панель</h3>
+                <button class="admin-close" onclick="closeAdminPanel()">&times;</button>
+            </div>
+            
+            <!-- Экран входа с паролем -->
+            <div id="adminLoginScreen">
+                <div style="text-align: center; padding: 20px 24px;">
+                    <h3 style="margin-bottom: 20px;">🔐 Вход в админ-панель</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Введите пароль для доступа</p>
+                    <div class="admin-form-group" style="max-width: 300px; margin: 0 auto;">
+                        <input type="password" id="adminPassword" placeholder="Пароль" style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                    </div>
+                    <div id="adminPasswordError" style="color: var(--accent); margin-top: 12px; display: none; font-size: 0.9rem;">Неверный пароль</div>
+                    <div style="margin-top: 24px;">
+                        <button class="btn btn-primary btn-block" onclick="checkAdminPassword()" style="max-width: 200px; margin: 0 auto;">Войти</button>
+                    </div>
+                    <div style="margin-top: 16px; color: var(--text-muted); font-size: 0.85rem;">
+                        Обратитесь к администратору для получения пароля
+                    </div>
+                </div>
+            </div>
+            
+            <div id="adminMainContent" style="display: none;">
+                <div class="admin-section">
+                    <h4>📸 Загрузить фото товара</h4>
+                <p>Выберите товар и загрузите фотографию с телефона или ПК</p>
+                
+                <div class="admin-form-group">
+                    <label for="adminProductSelect">Товар:</label>
+                    <select id="adminProductSelect">
+                        <option value="1">Ремень YSL</option>
+                        <option value="2">Лонгслив Hysteric Glamour</option>
+                        <option value="3">Браслетки CHROME HEARTS</option>
+                        <option value="4">Футболка Hysteric Glamour</option>
+                    </select>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="adminPhotoUpload">Фотография:</label>
+                    <input type="file" id="adminPhotoUpload" accept="image/*" capture="environment">
+                </div>
+                
+                <div class="admin-preview" id="adminPreview">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Превью появится здесь после выбора файла</p>
+                </div>
+                
+                <button class="btn btn-primary btn-block" onclick="adminUploadPhoto()">💾 Сохранить фото</button>
+            </div>
+
+            <div class="admin-section">
+                <h4>➕ Создать новый товар</h4>
+                <p>Заполните поля, чтобы добавить товар в каталог</p>
+                
+                <div class="admin-form-group">
+                    <label for="newProductName">Название товара:</label>
+                    <input type="text" id="newProductName" placeholder="Например: Худи W.E. Store">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="newProductPrice">Цена (₽):</label>
+                    <input type="number" id="newProductPrice" placeholder="0" min="0">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="newProductOldPrice">Старая цена (₽, опционально):</label>
+                    <input type="number" id="newProductOldPrice" placeholder="0" min="0">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="newProductCategory">Категория:</label>
+                    <select id="newProductCategory">
+                        <option value="tops">Верхняя одежда</option>
+                        <option value="bottoms">Низ</option>
+                        <option value="accessories">Аксессуары</option>
+                    </select>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="newProductSizes">Размеры товара:</label>
+                    <input type="text" id="newProductSizes" placeholder="M, L, XL">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="newProductDescription">Описание:</label>
+                    <textarea id="newProductDescription" rows="3" placeholder="Расскажите про товар..."></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="newProductPhoto">Фотография товара:</label>
+                    <input type="file" id="newProductPhoto" accept="image/*" capture="environment">
+                </div>
+                
+                <div class="admin-preview" id="newProductPreview">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Превью появится здесь после выбора файла</p>
+                </div>
+                
+                <button class="btn btn-primary btn-block" onclick="adminCreateProduct()">➕ Создать товар</button>
+            </div>
+            
+            <div class="admin-section">
+                <h4>⚙️ Управление размерами</h4>
+                <p>Выберите товар и введите размеры через запятую (например: M, L, XL).</p>
+                
+                <div class="admin-form-group">
+                    <label for="adminSizeProductSelect">Товар:</label>
+                    <select id="adminSizeProductSelect"></select>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="adminSizeInput">Размеры (через запятую):</label>
+                    <input type="text" id="adminSizeInput" placeholder="M, L, XL">
+                </div>
+                
+                <button class="btn btn-primary btn-block" onclick="adminSaveSizes()">💾 Сохранить размеры</button>
+            </div>
+            
+            <div class="admin-section">
+                <h4>🗑️ Управление товарами</h4>
+                <button class="btn btn-outline btn-block" onclick="adminClearImages()">Очистить все загруженные фото</button>
+                <button class="btn btn-outline btn-block" onclick="adminResetToDefaults()">Сбросить к стандартным фото</button>
+                <button class="btn btn-outline btn-block" onclick="adminClearCart()">🗑️ Очистить корзину</button>
+                <button class="btn btn-outline btn-block" onclick="adminChangePassword()">🔑 Сменить пароль</button>
+            </div>
+            
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem;">
+                <p>💡 Фото сохраняются в браузере (localStorage). При очистке кэша браузера загруженные фото удалятся.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="confetti"></canvas>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Галерея фотографий (lightbox) -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-overlay" onclick="closeGallery()"></div>
+        <div class="gallery-content">
+            <button class="gallery-close" onclick="closeGallery()">&times;</button>
+            <button class="gallery-nav gallery-prev" onclick="prevGalleryPhoto()">&#10094;</button>
+            <div class="gallery-image-wrapper">
+                <img src="" alt="" id="galleryMainImg">
+                <div class="gallery-counter" id="galleryCounter">1 / 1</div>
+                <button class="gallery-delete-btn" id="galleryDeleteBtn" onclick="deleteGalleryPhoto()" title="Удалить фото">🗑️</button>
+            </div>
+            <button class="gallery-nav gallery-next" onclick="nextGalleryPhoto()">&#10095;</button>
+            <div class="gallery-thumbs" id="galleryThumbs"></div>
+            <div class="gallery-info">
+                <h3 id="galleryTitle"></h3>
+                <p id="galleryPrice"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
